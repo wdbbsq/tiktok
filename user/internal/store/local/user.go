@@ -2,6 +2,7 @@ package local
 
 import (
 	"github.com/JirafaYe/user/pkg"
+	"log"
 	"strconv"
 	"strings"
 	"time"
@@ -57,10 +58,13 @@ func (m *Manager) Login(username, password string) (bool, int64, error) {
 	var u User
 	err := m.handler.Table(user).Where("username=?", username).First(&u).Error
 	if err != nil {
-		panic(err)
 		return false, u.ID, err
 	}
 	pwd := strings.Split(u.Password, "$")
+	if len(pwd) < 3 {
+		log.Println("Wrong password format")
+		return false, 0, nil
+	}
 	userPassword := pkg.VerifyUserPassword(password, pwd[1], pwd[2])
 	return userPassword, u.ID, nil
 }

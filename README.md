@@ -2,6 +2,18 @@
 
 基于 grpc RPC微服务 + gin HTTP服务完成的第5届字节跳动青训营-极简抖音后端项目
 
+```shell
+docker run -d -p 8500:8500 \
+--restart=always \
+--name=consul \
+-v "/home/zsq/docker/consul/data:/consul/data" \
+consul agent \
+-server \
+-ui \
+-client=0.0.0.0 \
+-bootstrap-expect=1
+```
+
 ## 项目结构
 
 ```FILE

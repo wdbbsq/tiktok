@@ -9,23 +9,23 @@ import (
 var m *Manager
 
 type Manager struct {
-	localer *local.Manager
-	cacher  *cache.Manager
+	db    *local.Manager
+	redis *cache.Manager
 }
 
 func init() {
 	var err error
-	localer, err := local.New()
+	db, err := local.New()
 	if err != nil {
 		log.Fatal(err)
 	}
-	cacher, err := cache.New()
+	redis, err := cache.New()
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	m = &Manager{
-		localer: localer,
-		cacher:  cacher,
+		db:    db,
+		redis: redis,
 	}
 }

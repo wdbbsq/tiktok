@@ -1,13 +1,12 @@
 package center
 
 import (
-	"log"
-
 	consul "github.com/hashicorp/consul/api"
+	"log"
 )
 
 var (
-	addr   = "47.108.66.104:8500"
+	addr   = "192.168.0.103:8500"
 	client *consul.Client
 )
 

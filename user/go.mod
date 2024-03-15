@@ -1,6 +1,6 @@
 module github.com/JirafaYe/user
 
-go 1.18
+go 1.21
 
 require (
 	github.com/bwmarrin/snowflake v0.3.0
